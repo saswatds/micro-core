@@ -13,8 +13,8 @@ class PedalCore {
 
     }
 
-    registerRepo () {
-
+    registerRepo (repoGenarator) {
+        return repoGenarator()
     }
 
     registerService () {
