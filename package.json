@@ -22,6 +22,7 @@
     "js-yaml": "^3.8.4",
     "mongoose": "^4.11.4",
     "morgan": "1.8.1",
+    "rabbot": "^1.1.0",
     "sequelize": "^4.4.2",
     "superagent": "3.5.2",
     "winston": "^2.3.1"
