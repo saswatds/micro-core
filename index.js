@@ -1,4 +1,4 @@
-const {Express, Database, DI, Queue, Logger, Restifier} = require('./lib')
+const {Express, Database, DI, Queue, Logger, Restifier, Errors} = require('./lib')
 
 
 class PedalCore {
@@ -32,6 +32,7 @@ class PedalCore {
         this._config = Object.assign({}, defaultConfig, config)
 
         this.logger = new Logger(this._config.logger)
+        this.errors = Errors
         // Lets create the different object based on the config
         if (this._config.database) this.database = new Database(this._config.database.dialect, this._config.database.connectionUrl)
         if (this._config.queue) this.queue = new Queue(this._config.queue.dialect, this._config.queue.connectionUrl)
