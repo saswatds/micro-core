@@ -38,7 +38,7 @@ const repo = ({models, logger}) => {
     return Object.create({someFunction})
 }
 
-const service = ({unirest}) => {
+const service = ({request}) => {
     const someFunction = () => {
 
     }
