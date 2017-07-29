@@ -1,4 +1,4 @@
-const {Express, Database, DI, Queue, Logger} = require('./lib')
+const {Express, Database, DI, Queue, Logger, Restifier} = require('./lib')
 
 
 class PedalCore {
@@ -26,7 +26,8 @@ class PedalCore {
             },
             logger: {
                 consoleLevel: 'info'
-            }
+            },
+            restifier: false
         }
         this._config = Object.assign({}, defaultConfig, config)
 
@@ -35,7 +36,10 @@ class PedalCore {
         if (this._config.database) this.database = new Database(this._config.database.dialect, this._config.database.connectionUrl)
         if (this._config.queue) this.queue = new Queue(this._config.queue.dialect, this._config.queue.connectionUrl)
         if (this._config.express) this.express = new Express(this._config.express, this.logger)
-
+        if (this._config.restifier) {
+            if (!this.database || !this.express) throw new Error('For using Restifier both Database and Express should be enabled')
+            this.restifier = new Restifier(this.database, this.express)
+        }
         // Lets initiate the dependency injection procedure
         this.di = new DI(this)
 
@@ -89,7 +93,6 @@ class PedalCore {
         return this.queue.connect()
     }
 
-
     startExpress() {
         if (!this.express) return Promise.resolve()
         this.logger.debug('Starting express')
@@ -140,4 +143,5 @@ class PedalCore {
     }
 }
 
-module.exports = PedalCore
+module
+    .exports = PedalCore

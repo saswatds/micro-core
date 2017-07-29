@@ -8,7 +8,8 @@ const config = {
     queue: false,
     logger: {
         consoleLevel: 'debug'
-    }
+    },
+    restifier: true
 }
 
 // Use this model file for mongoose
@@ -22,9 +23,12 @@ const model = ({generator}) => {
 }
 
 // Format of all files
-const api = ({repo, service}, router) => {
+const api = ({repo, service, restifier}, router) => {
     router.get('/admin', repo.someFunction)
     router.post('/admin', service.someFunction)
+
+    // The route and then the model name
+    restifier.populate('/admin/user', 'User')
 }
 
 // Repo should return a object with all the functions
