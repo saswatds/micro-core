@@ -85,7 +85,7 @@ class PedalCore {
     connectDB() {
         if (!this.database) return Promise.resolve()
         this.logger.debug('Connecting to database')
-        this.database.connect()
+        return this.database.connect()
     }
 
     connectQueue() {
