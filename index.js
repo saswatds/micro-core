@@ -28,7 +28,7 @@ class PedalCore {
                 consoleLevel: 'info'
             }
         }
-        this._config = Object.assign(defaultConfig, config)
+        this._config = Object.assign({}, defaultConfig, config)
 
         this.logger = new Logger(this._config.logger)
         // Lets create the different object based on the config
