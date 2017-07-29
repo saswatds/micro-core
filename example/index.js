@@ -7,7 +7,7 @@ const config = {
     },
     queue: false,
     logger: {
-        consoleLevel: 'info'
+        consoleLevel: 'debug'
     }
 }
 
@@ -51,5 +51,5 @@ core.registerApi(api)
 core.registerModels(model)
 core.registerRepo(repo)
 core.registerService(service)
-core.start(process.env.PORT)
+core.start()
 
