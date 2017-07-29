@@ -12,7 +12,7 @@
   },
   "author": "Saswat Das",
   "license": "UNLICENSED",
-  "devDependencies": {
+  "dependencies": {
     "awilix": "2.2.4",
     "body-parser": "1.17.1",
     "compression": "^1.7.0",
@@ -23,17 +23,6 @@
     "morgan": "1.8.1",
     "rabbot": "^1.1.0",
     "sequelize": "^4.4.2",
-    "superagent": "3.5.2",
-    "winston": "^2.3.1"
-  },
-  "peerDependencies": {
-    "awilix": "2.2.4",
-    "body-parser": "1.17.1",
-    "compression": "^1.7.0",
-    "cors": "2.8.1",
-    "express": "4.15.2",
-    "http-status": "1.0.1",
-    "morgan": "1.8.1",
     "superagent": "3.5.2",
     "winston": "^2.3.1"
   }
