@@ -112,8 +112,6 @@ class PedalCore {
 
         // register all services
         if (this.serviceGenerator) {
-            // TODO: Bind to the dependency injection procedure
-
             const service = this.serviceGenerator.call(null, this.di.container.cradle)
             this.di.registerValue({service})
         }
