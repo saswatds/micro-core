@@ -101,7 +101,6 @@ class PedalCore {
         // The is the main orchestrator function
         if (this.database && this.modelGenerator) {
             // pre >> prepare all the model and set them at database
-            //TODO: Probally have to convert to an array
             this.modelGenerator({generator: this.database.modelGenerator()})
             this.di.registerValue({models: this.database.models})
         }
