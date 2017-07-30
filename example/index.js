@@ -5,7 +5,11 @@ const config = {
         dialect: 'mongoose',
         connectionUrl: 'mongodb://staging:5f78hg54@ds133271.mlab.com:33271/pedal_staging'
     },
-    queue: false,
+    queue: {
+        connection: {
+            uri: null
+        }
+    },
     logger: {
         consoleLevel: 'debug'
     },
