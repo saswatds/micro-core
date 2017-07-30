@@ -1,7 +1,7 @@
 {
-  "name": "micro-core",
+  "name": "@saswatds/micro-core",
   "version": "1.0.0",
-  "description": "The is the core-codebase based on which all the different micro-service are built",
+  "description": "Dore-codebase based on which all the different micro-service can be built",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,5 +22,13 @@
     "morgan": "1.8.1",
     "superagent": "3.5.2",
     "winston": "^2.3.1"
+  },
+  "directories": {
+    "example": "example"
+  },
+  "devDependencies": {
+    "mongoose": "^4.11.4",
+    "rabbot": "^1.1.0",
+    "sequelize": "^4.4.2"
   }
 }
