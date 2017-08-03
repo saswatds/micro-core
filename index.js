@@ -1,5 +1,5 @@
-const {Express, Database, DI, Queue, Logger, Restifier, Errors} = require('./lib')
-
+const _ = require('lodash')
+const { Express, Database, DI, Queue, Logger, Restifier, Errors } = require('./lib')
 
 class PedalCore {
     constructor(config) {
@@ -26,7 +26,7 @@ class PedalCore {
             },
             restifier: false
         }
-        this._config = Object.assign({}, defaultConfig, config)
+        this._config = _.merge(defaultConfig, config)
 
         this.logger = new Logger(this._config.logger)
         this.errors = Errors
@@ -101,8 +101,8 @@ class PedalCore {
         // The is the main orchestrator function
         if (this.database && this.modelGenerator) {
             // pre >> prepare all the model and set them at database
-            this.modelGenerator({generator: this.database.modelGenerator(), _this: this.database.orm})
-            this.di.registerValue({models: this.database.models})
+            this.modelGenerator({ generator: this.database.modelGenerator(), _this: this.database.orm })
+            this.di.registerValue({ models: this.database.models })
         }
         // pre >> prepare all the exchanges and queues
         if (this.queue && this.queueGenerator) {
@@ -113,12 +113,12 @@ class PedalCore {
         // register all services
         if (this.serviceGenerator) {
             const service = this.serviceGenerator.call(null, this.di.container.cradle)
-            this.di.registerValue({service})
+            this.di.registerValue({ service })
         }
 
         if (this.repoGenarator) {
             const repo = this.repoGenarator.call(null, this.di.container.cradle)
-            this.di.registerValue({repo})
+            this.di.registerValue({ repo })
         }
 
         if (this.express && this.apiGenerator) {
@@ -131,7 +131,7 @@ class PedalCore {
         ]).then(() => {
             return this.startExpress()
         }).then(() => {
-            this.logger.info(`${this._config.name} has started ... `)
+            this.logger.info(`${this._config.name} has started on port: ${this._config.express.port}`)
         }).catch((err) => {
             this.logger.error(err)
         })
