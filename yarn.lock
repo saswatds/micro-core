@@ -779,6 +779,10 @@ retry-as-promised@^2.0.0:
     cross-env "^3.1.2"
     debug "^2.2.0"
 
+retry@^0.10.1:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/retry/-/retry-0.10.1.tgz#e76388d217992c252750241d3d3956fed98d8ff4"
+
 riveter@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/riveter/-/riveter-0.2.0.tgz#1f7c8e865c455115fde594be24b0072ebdc8bee4"
