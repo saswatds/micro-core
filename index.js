@@ -46,6 +46,10 @@ class PedalCore {
         this.serviceGenerator = null
         this.queueGenerator = null
         this.logger.debug('Core has been constructed...')
+
+        process.on('unhandledRejection', (reason, p) => {
+            logger.error('Unhandled Rejection at:', p, 'reason:', reason);
+        });
     }
 
     registerApi(apiGenerator) {
@@ -138,5 +142,4 @@ class PedalCore {
     }
 }
 
-module
-    .exports = PedalCore
+module.exports = PedalCore
