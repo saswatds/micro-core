@@ -48,7 +48,7 @@ class PedalCore {
         this.logger.debug('Core has been constructed...')
 
         process.on('unhandledRejection', (reason, p) => {
-            logger.error('Unhandled Rejection at:', p, 'reason:', reason);
+            this.logger.error('Unhandled Rejection at:', p, 'reason:', reason);
         });
     }
 
