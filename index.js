@@ -11,6 +11,7 @@ class PedalCore {
                 connectionUrl: null
             },
             express: {
+                name: 'core-service',
                 morganStandalone: false, // Make morgan to be standalone and work with winston. Prints to stdout with dev
                 morganLevel: 'common',
                 CORSenabled: true,
@@ -18,7 +19,8 @@ class PedalCore {
                 parseJSON: true,
                 parseURLEncoded: true,
                 parseHTML: false,
-                port: 3000
+                enableTracing: true,
+                port: 3000,
             },
             queue: false,
             logger: {
