@@ -1,6 +1,6 @@
 {
   "name": "@saswatds/micro-core",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Dore-codebase based on which all the different micro-service can be built",
   "main": "index.js",
   "scripts": {
