@@ -19,7 +19,8 @@ class PedalCore {
                 parseJSON: true,
                 parseURLEncoded: true,
                 parseHTML: false,
-                enableTracing: true,
+                healthCheck: true,
+                enableTracing: false, // Set to true for using amazon xray, expects deamon be running at localhost
                 port: 3000,
             },
             queue: false,
