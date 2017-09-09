@@ -117,14 +117,14 @@ class PedalCore {
     // The is the main orchestrator function
     if (this.database && this.modelGenerator) {
       // pre >> prepare all the model and set them at database
-      this.modelGenerator({ generator: this.database.modelGenerator(), _this: this.database.orm })
+      this.modelGenerator({ generator: this.database.modelGenerator(), _this: this.database.orm }, this.di.container.cradle)
       this.di.registerValue({ models: this.database.models })
     }
     
     if (this.queue && this.queueGenerator) {
-      // pre >> prepare all the exchanges and queues
-      this.queueGenerator(_.merge({ register: this.queue.workerRegistrar()}, this.di.container.cradle))
       this.di.registerValue({ publish: this.queue.publish })
+      // pre >> prepare all the exchanges and queues
+      this.queueGenerator({ register: this.queue.workerRegistrar() }, this.di.container.cradle)
     }
 
     // register all services
