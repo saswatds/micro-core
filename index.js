@@ -86,6 +86,15 @@ class PedalCore {
 
     }
 
+    registerWorker(queueGenerator) {
+        this.queueGenerator = queueGenerator
+        this.logger.debug('Queue Generator has been set')
+    }
+
+    registerDependencies(dependencies) {
+        this.logger.warn('Dependency addition is not yet supported')
+    }
+
     connectDB() {
         if (!this.database) return Promise.resolve()
         this.logger.debug('Connecting to database')
@@ -113,8 +122,8 @@ class PedalCore {
         }
         // pre >> prepare all the exchanges and queues
         if (this.queue && this.queueGenerator) {
-            this.logger.warn("The queue implementation has not yet been completed")
-            //TODO: Add the queue to the dependency
+            this.queueGenerator({ register : this.queue.workerRegistrar()})
+            this.di.registerValue({ publish: this.queue.publish })
         }
 
         // register all services
