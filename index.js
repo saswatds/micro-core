@@ -35,7 +35,7 @@ class PedalCore {
     this.errors = Errors
     // Lets create the different object based on the config
     if (this._config.database) this.database = new Database(this._config.database.dialect, this._config.database.connectionUrl)
-    if (this._config.queue) this.queue = new Queue(this._config.queue)
+    if (this._config.queue) this.queue = new Queue(this._config.queue, this.logger)
     if (this._config.express) this.express = new Express(this._config.express, this.logger)
     if (this._config.restifier) {
       if (!this.database || !this.express) throw new Error('For using Restifier both Database and Express should be enabled')
