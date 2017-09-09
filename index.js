@@ -120,9 +120,10 @@ class PedalCore {
       this.modelGenerator({ generator: this.database.modelGenerator(), _this: this.database.orm })
       this.di.registerValue({ models: this.database.models })
     }
-    // pre >> prepare all the exchanges and queues
+    
     if (this.queue && this.queueGenerator) {
-      this.queueGenerator({ register: this.queue.workerRegistrar() })
+      // pre >> prepare all the exchanges and queues
+      this.queueGenerator(_.merge({ register: this.queue.workerRegistrar()}, this.di.container.cradle))
       this.di.registerValue({ publish: this.queue.publish })
     }
 
