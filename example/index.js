@@ -5,11 +5,7 @@ const config = {
         dialect: 'mongoose',
         connectionUrl: 'mongodb://staging:5f78hg54@ds133271.mlab.com:33271/pedal_staging'
     },
-    queue: {
-        connection: {
-            uri: null
-        }
-    },
+    queue: false,
     logger: {
         consoleLevel: 'debug'
     },
@@ -18,29 +14,29 @@ const config = {
 
 // Use this model file for mongoose
 const model = ({generator}) => {
-    const userSchema = {}
-    generator('Users', userSchema, (schema) => {
+    const testSchema = {
+        value: Number
+    }
+    generator('Test', testSchema, (schema) => {
         schema.pre('save', (next) => {
-            // Do something, something
+            console.log(this)
+            next()
         })
     })
 }
 
 // Format of all files
-const api = ({repo, service, restifier}, router) => {
-    router.get('/admin', repo.someFunction)
-    router.post('/admin', service.someFunction)
+const api = ({repo, restifier}, router) => {
+    router.get('/test/repo', repo.someFunction)
 
     // The route and then the model name
-    restifier.populate('/admin/user', 'User')
+    restifier.populate('/test/rest', 'Test')
 }
 
 // Repo should return a object with all the functions
 const repo = ({models, logger}) => {
-    const {User, Trips} = models
-
-    const someFunction = () => {
-
+    const someFunction = (req, res, next) => {
+        res.send('OK')
     }
 
     return Object.create({someFunction})
@@ -50,7 +46,6 @@ const service = ({request}) => {
     const someFunction = () => {
 
     }
-
     return Object.create({someFunction})
 }
 

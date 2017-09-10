@@ -4,7 +4,8 @@
   "description": "Dore-codebase based on which all the different micro-service can be built",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "example" : "node example/index.js"
   },
   "repository": {
     "type": "git",
