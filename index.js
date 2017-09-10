@@ -121,12 +121,6 @@ class PedalCore {
       this.di.registerValue({ models: this.database.models })
     }
     
-    if (this.queue && this.queueGenerator) {
-      this.di.registerValue({ publish: this.queue.publish })
-      // pre >> prepare all the exchanges and queues
-      this.queueGenerator({ register: this.queue.workerRegistrar() }, this.di.container.cradle)
-    }
-
     // register all services
     if (this.serviceGenerator) {
       const service = this.serviceGenerator.call(null, this.di.container.cradle)
@@ -136,6 +130,12 @@ class PedalCore {
     if (this.repoGenarator) {
       const repo = this.repoGenarator.call(null, this.di.container.cradle)
       this.di.registerValue({ repo })
+    }
+
+    if (this.queue && this.queueGenerator) {
+      this.di.registerValue({ publish: this.queue.publish })
+      // pre >> prepare all the exchanges and queues
+      this.queueGenerator({ register: this.queue.workerRegistrar() }, this.di.container.cradle)
     }
 
     if (this.express && this.apiGenerator) {
