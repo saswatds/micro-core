@@ -3,7 +3,7 @@ const PedalCore = require('../index')
 const config = {
     database: {
         dialect: 'mongoose',
-        connectionUrl: 'mongodb://staging:5f78hg54@ds133271.mlab.com:33271/pedal_staging'
+        connectionUrl: 'mongodb://admin:password@ds117605.mlab.com:17605/cherami'
     },
     queue: false,
     logger: {
