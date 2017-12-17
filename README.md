@@ -64,5 +64,33 @@ const config = {
 
 * `restifier` - The restifier is on of the powerful feature of the library that takes a Mongoose model as parameter and generates a rest-api using that model. The restifier is passed as a dependency to the api generators
 
-#### Model
+#### Dependency Injection
+- `request` - An instance of Super agent
+- `logger` - 
+
+#### Model Generator
+
+The model generator is a function where the different mongoose Schema's are defined, and using a generator function mongoose models are generated.
+
+```javascript
+// Use this model file for mongoose
+const model = ({generator, _this}, <di>) => {
+    const testSchema = {
+        _id: _this.mongoose.Schema.Types.ObjectId
+        value: Number
+    }
+    generator('Test', testSchema, (schema) => {
+        schema.pre('save', (next) => {
+            next()
+        })
+    })
+}
+```
+
+The model generator is parametered with a `generator` function and `_this` a reference to the underlieing orm being used. The _this can be used to access schema constants required while defining schema. The second parameter is a reference to the dipendencies.
+
+The generator function take 3 arguments, 
+- name of the model
+- schema object
+- optional hook function that would be called with the schema post generation but before model generation. You can use this schema to add pre and post hooks to the schema
 
